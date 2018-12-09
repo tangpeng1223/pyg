@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://code.alibabatech.com/schema/dubbo
+      http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <bean id="brandService" class="com.pingyougou.sellergoods.service.impl.BrandServiceImpl"/>
+
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <dubbo:application name="pinyougou-sellergoods-service"/>
+    <dubbo:registry address="zookeeper://192.168.12.168:2181"/>
+    <!--<dubbo:annotation package="com.pingyougou.sellergoods.service.impl"/>-->
+
+    <dubbo:service interface="com.pingyougou.service.inter.BrandService" ref="brandService"/>
+
+
+
+</beans>
